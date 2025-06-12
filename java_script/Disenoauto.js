@@ -1,8 +1,8 @@
 let scene, camera, renderer, carModel, controls, color_actual;
 let modelPaths = [
-    '../modelos/low_poly_small_car/scene.gltf',
-    '../modelos/lowpoly_car_pack/scene.gltf',
-    '../modelos/generic_lowpoly_sedan/scene.gltf'
+    'modelos/low_poly_small_car/scene.gltf',
+    'modelos/lowpoly_car_pack/scene.gltf',
+    'modelos/generic_lowpoly_sedan/scene.gltf'
 ];
 let currentModelIndex = 0;
 

@@ -45,3 +45,16 @@ function eliminar_cuenta(event) {
         console.log("Eliminación de cuenta cancelada.");
     }
 }
+
+const params = new URLSearchParams(window.location.search);
+  const n_usuario = params.get("n_usuario");
+
+  const botonDisenar = document.getElementById("btn-disenar");
+
+  if (n_usuario) {
+    // Si hay usuario, lo pasamos como parámetro
+    botonDisenar.href = `disena_auto.html?n_usuario=${encodeURIComponent(n_usuario)}`;
+  } else {
+    // Si no hay usuario, lo dejamos sin datos
+    botonDisenar.href = "disena_auto.html";
+  }

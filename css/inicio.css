@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('/static/images/23624.jpg');
+    background-image: url('../static/images/23624.jpg');
     background-size: cover;
     background-position: center;
     font-family: 'Arial', sans-serif;

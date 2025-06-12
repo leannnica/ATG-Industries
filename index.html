@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pagina inicial</title>
-    <link rel="stylesheet" href="../css/principal.css">
+    <link rel="stylesheet" href="css/principal.css">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
 </head>
 
@@ -15,7 +15,7 @@
         <nav>
             <ul class="nav_botones">
                 {% if not n_usuario %}
-                    <li><a href="{{ url_for('login_page') }}" class="nav_boton">Inicio sesión</a></li>
+                    <li><a href="inicio.html" class="nav_boton">Inicio sesión</a></li>
                 {% endif %}    
             </ul>
         </nav>
@@ -35,11 +35,7 @@
 
         </section>
 
-        {% if n_usuario %}
-            <a href="{{ url_for('disenar', n_usuario = n_usuario) }}" class="btn-diseña">Diseña tu Auto</a>
-        {% else %}     
-            <a href="{{ url_for('disenar')}}" class="btn-diseña">Diseña tu Auto</a>
-        {% endif %} 
+        <a id="btn-disenar" class="btn-diseña">Diseña tu Auto</a>
 
         <div id="sidebarIndicator" style="position: fixed; right: 0; top: 50%; cursor: pointer; z-index: 1000;">></div>
         <aside id="sidebar" class="hidden">
@@ -48,16 +44,16 @@
                 {% if n_usuario %}
                     {{n_usuario }}
                 {% else %}
-                    <a href="{{ url_for('login_page') }}" class="nav_boton">Sin iniciar sesión</a>
+                    <a href="inicio.html" class="nav_boton">Sin iniciar sesión</a>
                 {% endif %}
             </h2>
             <ul>
                 {% if n_usuario %}
                     <li><a href="{{ url_for('garage', n_usuario = n_usuario) }}">Garaje.</a></li>
-                    <li><a href="{{ url_for('home') }}">Cerrar sesión.</a></li>
+                    <li><a href="index.html">Cerrar sesión.</a></li>
                     <button id="btn_eliminar" onclick="eliminar_cuenta(event)" data-usuario="{{ n_usuario }}">Eliminar Cuenta</button>
                 {% else %}     
-                    <a href="{{ url_for('disenar')}}" class="btn-diseña">Diseña tu Auto</a>
+                    <a href="disena_auto.html" class="btn-diseña">Diseña tu Auto</a>
                 {% endif %}
             </ul>
             
@@ -74,7 +70,7 @@
 
     
     <div id="arrow-indicator">→</div>
-    <script src="{{ url_for('enviar_js', filename='main1.js') }}"></script>
+    <script src="java_script/main1.js"></script>
 
 </body>
 

@@ -1,5 +1,5 @@
 body {
-  background-image: url('/static/images/garagee.jpg');
+  background-image: url('../static/images/garagee.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
