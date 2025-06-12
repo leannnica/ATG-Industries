@@ -3,7 +3,7 @@ function register(event) {
     let usuario_nuevo = document.getElementById("usuario").value
     let password_nuevo = document.getElementById("password").value
     
-    fetch(window.location.href + "/registrarse", 
+    fetch("https://atg-industries-backend-production.up.railway.app/register_page/registrarse",  
         {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -24,7 +24,7 @@ function register(event) {
             alert(data.error);
         } else{
             alert(data.mensaje);
-            window.location.href = '/login_page'
+            window.location.href = `main.html?n_usuario=${usuario_nuevo}`
         }
     })
 }
