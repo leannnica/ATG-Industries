@@ -34,7 +34,7 @@ function login(event) {
     let usuario = document.getElementById("usuario").value
     let password = document.getElementById("password").value
 
-    fetch(window.location.href + "/login", 
+    fetch("https://atg-industries-backend-production.up.railway.app/login_page/login",        
         {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -52,8 +52,8 @@ function login(event) {
     })
     .then(data => {
         if(data.usuario){
-            window.location.href = `/${data.usuario}`; 
-        } else{
+            window.location.href = `index.html?n_usuario=${data.usuario}`;
+                } else{
             alert(data.error)
         }
         
