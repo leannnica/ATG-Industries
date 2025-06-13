@@ -55,7 +55,7 @@ const navGaraje = document.getElementById("nav_garaje");
 const navLogout = document.getElementById("nav_logout");
 const navEliminar = document.getElementById("nav_eliminar");
 const navNoSesion = document.getElementById("nav_no_sesion");
-const linkDiseñaAuto = document.querySelector("link_diseñar");
+const linkDiseñaAuto = document.querySelector("link_disenar");
 const linkGaraje = document.getElementById("link_garaje");
 const btnEliminar = document.getElementById("btn_eliminar");
 
@@ -66,7 +66,6 @@ if (n_usuario) {
     navLogout.style.display = "list-item";
     navEliminar.style.display = "list-item";
     navNoSesion.style.display = "none";
-    linkDiseñaAuto.href = `disena_auto.html?n_usuario=${encodeURIComponent(n_usuario)}`;
     linkGaraje.href = `garage.html?n_usuario=${encodeURIComponent(n_usuario)}`;
     btnEliminar.dataset.usuario = n_usuario;
 } else {
@@ -76,6 +75,10 @@ if (n_usuario) {
     navLogout.style.display = "none";
     navEliminar.style.display = "none";
     navNoSesion.style.display = "list-item";
-    linkDiseñaAuto.href = `disena_auto.html`;
-
 }  
+
+if (linkDiseñaAuto && n_usuario) {
+    linkDiseñaAuto.href = `disena_auto.html?n_usuario=${encodeURIComponent(n_usuario)}`;
+} else if (linkDiseñaAuto) {
+    linkDiseñaAuto.href = `disena_auto.html`;
+}
