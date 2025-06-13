@@ -69,7 +69,7 @@ function cambiar_contraseña(event) {
     let usuario = document.getElementById("usuario").value;
     let password = document.getElementById("password").value;
     let new_password = document.getElementById('new_password').value;
-    fetch(window.location.href + "/cambiar_contraseña", 
+    fetch("https://atg-industries-backend-production.up.railway.app/cambio_contraseña/cambiar_contraseña", 
         {
             method: "PUT",
             headers: {'Content-Type': 'application/json'},
