@@ -5,6 +5,7 @@ let modelPaths = [
     'modelos/generic_lowpoly_sedan/scene.gltf'
 ];
 let currentModelIndex = 0;
+let colores_temporales = {};
 
 function init() {
     const canvas = document.getElementById('car-canvas');
@@ -74,6 +75,7 @@ function changeCarColor(color) {
     if (carModel) {
         carModel.traverse((child) => {
             if (child.isMesh) {
+                
                 // COLOR 1ER AUTO
                 if (child.name.includes('Chassis_Chassis_0')) {
                     child.material.color.set(color);
@@ -86,16 +88,24 @@ function changeCarColor(color) {
                 if (child.name.includes('Body_Color1_0')) {
                     child.material.color.set(color);
                 }
-                if (child.name.includes('Body_Color1_0')) {
-                    child.material.color.set(color);
-                }
                 if (child.name.includes('Body_Color2_0')) {
                     child.material.color.set(color);
                 }
             }
-            color_actual = color;
         });
+        color_actual = color;
+        
+        colores_temporales[currentModelIndex] = color;
     }
+}
+
+function temporalColor() {
+    setTimeout(() => {
+        const color_guardado = colores_temporales[currentModelIndex];
+        if (color_guardado) {
+            changeCarColor(color_guardado);
+        }
+    }, 100);
 }
 
 function changeCarModel(direction) {
@@ -107,11 +117,13 @@ function changeCarModel(direction) {
 
     if (currentModelIndex === 0) {
         loadCarModel(modelPaths[currentModelIndex], new THREE.Vector3(0.5, -2, 1), new THREE.Vector3(0, -2.3, 0));
+        temporalColor();
     } else if (currentModelIndex === 1) {
         loadCarModel(modelPaths[currentModelIndex], new THREE.Vector3(1, 0, 0), new THREE.Vector3(0, 0, 0));
+        temporalColor();
     } else if (currentModelIndex === 2) {
         loadCarModel(modelPaths[currentModelIndex], new THREE.Vector3(1, -0.7, 0), new THREE.Vector3(0, -0.7, 0));
-    }
+        temporalColor();
 }
 
 function animate() {

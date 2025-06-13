@@ -87,6 +87,9 @@ function loadCarModel(modelPath, cameraPosition, controlsTarget) {
 
         scene.add(carModel);
         resetCameraAndControls(cameraPosition, controlsTarget);
+
+        changeCarColor(auto.color);
+
         animate();
     }, undefined, function(error) {
         console.error('An error happened', error);
@@ -135,9 +138,6 @@ function changeCarModel(direction) {
     } else if (auto.modelo === modelPaths[2]) {
         loadCarModel(modelPaths[2], new THREE.Vector3(1, -0.7, 0), new THREE.Vector3(0, -0.7, 0));
     }
-    setTimeout(() => {
-        changeCarColor(auto.color);
-    }, 70)
 
     cambiar_nombre_auto();
 }
