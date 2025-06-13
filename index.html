@@ -14,9 +14,9 @@
     <header id="nav_inicial">
         <nav>
             <ul class="nav_botones">
-                {% if not n_usuario %}
-                    <li><a href="inicio.html" class="nav_boton">Inicio sesión</a></li>
-                {% endif %}    
+                <li id="nav_login" style="display: none;">
+                    <a href="inicio.html" class="nav_boton">Inicio sesión</a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -40,21 +40,15 @@
         <div id="sidebarIndicator" style="position: fixed; right: 0; top: 50%; cursor: pointer; z-index: 1000;">></div>
         <aside id="sidebar" class="hidden">
             <h2>
-                Usuario: 
-                {% if n_usuario %}
-                    {{n_usuario }}
-                {% else %}
-                    <a href="inicio.html" class="nav_boton">Sin iniciar sesión</a>
-                {% endif %}
+                Usuario: <span id="nombre_usuario"></span>
             </h2>
             <ul>
-                {% if n_usuario %}
-                    <li><a href="{{ url_for('garage', n_usuario = n_usuario) }}">Garaje.</a></li>
-                    <li><a href="index.html">Cerrar sesión.</a></li>
-                    <button id="btn_eliminar" onclick="eliminar_cuenta(event)" data-usuario="{{ n_usuario }}">Eliminar Cuenta</button>
-                {% else %}     
-                    <a href="disena_auto.html" class="btn-diseña">Diseña tu Auto</a>
-                {% endif %}
+                <li id="nav_garaje" style="display: none;"><a id="link_garaje">Garaje</a></li>
+                <li id="nav_logout" style="display: none;"><a href="index.html">Cerrar sesión.</a></li>
+                <li id="nav_eliminar" style="display: none;">
+                    <button id="btn_eliminar">Eliminar Cuenta</button>
+                </li>
+                <li id="nav_no_sesion"><a href="disena_auto.html" class="btn-diseña">Diseña tu Auto</a></li>
             </ul>
             
         </aside>
@@ -64,10 +58,6 @@
     <footer id="footer_marca">
         <p>&copy; 2024 - BoverFC</p>
     </footer>
-    
-
-
-
     
     <div id="arrow-indicator">→</div>
     <script src="java_script/main1.js"></script>

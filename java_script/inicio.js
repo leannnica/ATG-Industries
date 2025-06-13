@@ -52,7 +52,7 @@ function login(event) {
     })
     .then(data => {
         if(data.usuario){
-            window.location.href = `index.html?n_usuario=${data.usuario}`;
+            window.location.href = `/login_page`;
                 } else{
             alert(data.error)
         }

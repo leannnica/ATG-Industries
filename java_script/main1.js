@@ -47,14 +47,31 @@ function eliminar_cuenta(event) {
 }
 
 const params = new URLSearchParams(window.location.search);
-  const n_usuario = params.get("n_usuario");
+const n_usuario = params.get("n_usuario");
 
-  const botonDisenar = document.getElementById("btn-disenar");
+const nombreUsuario = document.getElementById("nombre_usuario");
+const navLogin = document.getElementById("nav_login");
+const navGaraje = document.getElementById("nav_garaje");
+const navLogout = document.getElementById("nav_logout");
+const navEliminar = document.getElementById("nav_eliminar");
+const navNoSesion = document.getElementById("nav_no_sesion");
+const linkGaraje = document.getElementById("link_garaje");
+const btnEliminar = document.getElementById("btn_eliminar");
 
-  if (n_usuario) {
-    // Si hay usuario, lo pasamos como parámetro
-    botonDisenar.href = `disena_auto.html?n_usuario=${encodeURIComponent(n_usuario)}`;
-  } else {
-    // Si no hay usuario, lo dejamos sin datos
-    botonDisenar.href = "disena_auto.html";
-  }
+if (n_usuario) {
+    nombreUsuario.innerText = n_usuario;
+    navLogin.style.display = "none";
+    navGaraje.style.display = "list-item";
+    navLogout.style.display = "list-item";
+    navEliminar.style.display = "list-item";
+    navNoSesion.style.display = "none";
+    linkGaraje.href = `garage.html?n_usuario=${n_usuario}`;
+    btnEliminar.dataset.usuario = n_usuario;
+} else {
+    nombreUsuario.innerHTML = `<a href="inicio.html" class="nav_boton">Sin iniciar sesión</a>`;
+    navLogin.style.display = "list-item";
+    navGaraje.style.display = "none";
+    navLogout.style.display = "none";
+    navEliminar.style.display = "none";
+    navNoSesion.style.display = "list-item";
+}  
