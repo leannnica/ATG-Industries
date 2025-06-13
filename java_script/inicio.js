@@ -24,7 +24,7 @@ function register(event) {
             alert(data.error);
         } else{
             alert(data.mensaje);
-            window.location.href = `/login_page.html`;
+            window.location.href = `/inicio.html`;
         }
     })
 }
@@ -91,7 +91,7 @@ function cambiar_contraseña(event) {
             alert(data.error); 
         }else{
             alert(data.mensaje);
-            window.location.href = '/login_page';
+            window.location.href = '/inicio.html';
         }
     })
     .catch(error => {
