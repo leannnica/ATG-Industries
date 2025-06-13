@@ -141,13 +141,15 @@ function resetCameraAndControls(position, target) {
 }
 
 function guardar_auto(event) {
-    const n_usuario = new URLSearchParams(window.location.search).get("n_usuario");
-
     event.preventDefault()
+
+    const params = new URLSearchParams(window.location.search);
+    const n_usuario = params.get("n_usuario");
+
     if (n_usuario && color_actual){
         let nombre_nuevo = document.getElementById("nombre").value;
         let modelo_nuevo = modelPaths[currentModelIndex];
-        fetch('https://atg-industries-backend-production.up.railway.app/disenar/${n_usuario}/guardar-auto',
+        fetch(`https://atg-industries-backend-production.up.railway.app/disenar/${n_usuario}/guardar-auto`,
             {method: "POST" , 
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify( {
@@ -174,8 +176,15 @@ function guardar_auto(event) {
         alert("Debe estar logueado para realizar esa acción");
     }else{
         alert("Debe elegir algun color")
-    }
-    
+    } 
 }
+var n_usuario = new URLSearchParams(window.location.search).get("n_usuario");
+const no_sesion_garaje = document.getElementById("no_sesion_garaje");
 
+if (n_usuario) {
+    no_sesion_garaje.href = `garage.html?n_usuario=${encodeURIComponent(n_usuario)}`;
+    no_sesion_garaje.style.display = "block";
+} else {
+    no_sesion_garaje.hidden = true;
+}
 window.onload = init;

@@ -198,6 +198,16 @@ h2 {
   transform: scale(1.05); 
 }
 
+.ir_al_garage {
+  padding: 12px 24px; 
+  font-size: 16px;
+  color: #fff;
+  background-color: #333;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
 /* link de regreso pag anterior  */
 .navbar {
   position: fixed;
