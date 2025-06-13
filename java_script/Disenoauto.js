@@ -141,11 +141,13 @@ function resetCameraAndControls(position, target) {
 }
 
 function guardar_auto(event) {
+    const n_usuario = new URLSearchParams(window.location.search).get("n_usuario");
+
     event.preventDefault()
     if (n_usuario && color_actual){
         let nombre_nuevo = document.getElementById("nombre").value;
         let modelo_nuevo = modelPaths[currentModelIndex];
-        fetch("https://atg-industries-backend-production.up.railway.app/disenar/${usuario_nuevo}/guardar-auto",
+        fetch('https://atg-industries-backend-production.up.railway.app/disenar/${n_usuario}/guardar-auto',
             {method: "POST" , 
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify( {

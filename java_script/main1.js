@@ -77,5 +77,4 @@ if (n_usuario) {
     navEliminar.style.display = "none";
     navNoSesion.style.display = "list-item";
     linkDiseñaAuto.href = `disena_auto.html`;
-
 }  
