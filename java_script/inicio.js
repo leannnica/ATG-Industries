@@ -24,7 +24,7 @@ function register(event) {
             alert(data.error);
         } else{
             alert(data.mensaje);
-            window.location.href = `main.html?n_usuario=${usuario_nuevo}`
+            window.location.href = `/login_page.html`;
         }
     })
 }
@@ -52,7 +52,7 @@ function login(event) {
     })
     .then(data => {
         if(data.usuario){
-            window.location.href = `/login_page`;
+            window.location.href = `index.html?n_usuario=${data.usuario}`;
                 } else{
             alert(data.error)
         }
