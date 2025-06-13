@@ -75,7 +75,6 @@ function changeCarColor(color) {
     if (carModel) {
         carModel.traverse((child) => {
             if (child.isMesh) {
-                
                 // COLOR 1ER AUTO
                 if (child.name.includes('Chassis_Chassis_0')) {
                     child.material.color.set(color);
@@ -94,7 +93,6 @@ function changeCarColor(color) {
             }
         });
         color_actual = color;
-        
         colores_temporales[currentModelIndex] = color;
     }
 }
@@ -124,6 +122,7 @@ function changeCarModel(direction) {
     } else if (currentModelIndex === 2) {
         loadCarModel(modelPaths[currentModelIndex], new THREE.Vector3(1, -0.7, 0), new THREE.Vector3(0, -0.7, 0));
         temporalColor();
+    }
 }
 
 function animate() {
