@@ -234,3 +234,7 @@
 #sidebarIndicator:hover {
     opacity: 1; 
 }
+
+a {
+    cursor: pointer;
+}

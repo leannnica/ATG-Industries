@@ -143,8 +143,8 @@ function resetCameraAndControls(position, target) {
 function guardar_auto(event) {
     event.preventDefault()
 
-    const params = new URLSearchParams(window.location.search);
-    const n_usuario = params.get("n_usuario");
+    const n_usuario = localStorage.getItem("usuario");
+    const nombreUsuarioElement = document.getElementById("nombre_usuario");
 
     if (n_usuario && color_actual){
         let nombre_nuevo = document.getElementById("nombre").value;
@@ -178,11 +178,12 @@ function guardar_auto(event) {
         alert("Debe elegir algun color")
     } 
 }
-var n_usuario = new URLSearchParams(window.location.search).get("n_usuario");
+
+var n_usuario = localStorage.getItem("usuario");
 const no_sesion_garaje = document.getElementById("no_sesion_garaje");
 
 if (n_usuario) {
-    no_sesion_garaje.href = `garage.html?n_usuario=${encodeURIComponent(n_usuario)}`;
+    no_sesion_garaje.href = 'garage.html';
     no_sesion_garaje.style.display = "block";
 } else {
     no_sesion_garaje.hidden = true;

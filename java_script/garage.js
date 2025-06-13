@@ -10,8 +10,8 @@ let autos_usuario;
 let cantidad_autos = 0;
 let auto;
 
-const params = new URLSearchParams(window.location.search);
-const n_usuario = params.get("n_usuario");
+const n_usuario = localStorage.getItem("usuario");
+const nombreUsuarioElement = document.getElementById("nombre_usuario");
 
 fetch(`https://atg-industries-backend-production.up.railway.app/garage/${n_usuario}/autos`)
     .then(response => {

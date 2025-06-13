@@ -18,6 +18,9 @@ document.addEventListener('mousemove', (event) => {
     }
 });
 
+const n_usuario = localStorage.getItem("usuario");
+const nombreUsuarioElement = document.getElementById("nombre_usuario");
+
 function eliminar_cuenta(event) {
     event.preventDefault();
     let confirmar = confirm("¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.");
@@ -25,7 +28,7 @@ function eliminar_cuenta(event) {
     if (confirmar) {
         let usuario = document.getElementById("btn_eliminar").getAttribute("data-usuario");
 
-        fetch(`/${usuario}/eliminar_cuenta`, {
+        fetch(`https://atg-industries-backend-production.up.railway.app/${n_usuario}/eliminar_cuenta`, {
             method: "DELETE"
         })
         .then(response => {
@@ -36,7 +39,9 @@ function eliminar_cuenta(event) {
         })
         .then(data => {
             alert(data.mensaje);
-            window.location.href = '/login_page';
+            localStorage.removeItem("usuario");
+            localStorage.removeItem("token");
+            window.location.href = 'index.html';
         })
         .catch(error => {
             console.error('Error:', error);
@@ -45,9 +50,6 @@ function eliminar_cuenta(event) {
         console.log("Eliminación de cuenta cancelada.");
     }
 }
-
-const params = new URLSearchParams(window.location.search);
-const n_usuario = params.get("n_usuario");
 
 const nombreUsuario = document.getElementById("nombre_usuario");
 const navLogin = document.getElementById("nav_login");
@@ -66,8 +68,8 @@ if (n_usuario) {
     navLogout.style.display = "list-item";
     navEliminar.style.display = "list-item";
     navNoSesion.style.display = "none";
-    linkGaraje.href = `garage.html?n_usuario=${encodeURIComponent(n_usuario)}`;
-    linkDiseñaAuto.href = `disena_auto.html?n_usuario=${encodeURIComponent(n_usuario)}`;
+    linkGaraje.href = 'garage.html';
+    linkDiseñaAuto.href = 'disena_auto.html';
     btnEliminar.dataset.usuario = n_usuario;
 } else {
     nombreUsuario.innerHTML = `<a href="inicio.html" class="nav_boton">Sin iniciar sesión</a>`;
@@ -78,3 +80,21 @@ if (n_usuario) {
     navNoSesion.style.display = "list-item";
     linkDiseñaAuto.href = `disena_auto.html`;
 }  
+
+function logout() {
+    localStorage.removeItem("usuario");
+    localStorage.removeItem("token");
+    window.location.href = 'index.html'; 
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const linkLogout = document.getElementById("link_logout");
+
+    if (linkLogout) {
+        linkLogout.addEventListener('click', (event) => {
+            event.preventDefault();
+            logout();
+        });
+    }
+});

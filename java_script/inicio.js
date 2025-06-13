@@ -24,7 +24,7 @@ function register(event) {
             alert(data.error);
         } else{
             alert(data.mensaje);
-            window.location.href = `/inicio.html`;
+            window.location.href = `inicio.html`;
         }
     })
 }
@@ -51,10 +51,14 @@ function login(event) {
         return response.json();
     })
     .then(data => {
-        if(data.usuario){
-            window.location.href = `index.html?n_usuario=${data.usuario}`;
-                } else{
-            alert(data.error)
+        console.log("Respuesta del login:", data);
+    
+        if (data.usuario && data.token) {
+            localStorage.setItem("usuario", data.usuario);
+            localStorage.setItem("token", data.token);
+            window.location.href = 'index.html';
+            } else {
+                alert(data.error || "Error desconocido");
         }
         
     })
@@ -91,7 +95,7 @@ function cambiar_contraseña(event) {
             alert(data.error); 
         }else{
             alert(data.mensaje);
-            window.location.href = '/inicio.html';
+            window.location.href = 'inicio.html';
         }
     })
     .catch(error => {
