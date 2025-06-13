@@ -1,8 +1,8 @@
 let scene, camera, renderer, carModel, controls;
 let modelPaths = [
-    '../modelos/low_poly_small_car/scene.gltf',
-    '../modelos/lowpoly_car_pack/scene.gltf',
-    '../modelos/generic_lowpoly_sedan/scene.gltf'
+    'modelos/low_poly_small_car/scene.gltf',
+    '/modelos/lowpoly_car_pack/scene.gltf',
+    '/modelos/generic_lowpoly_sedan/scene.gltf'
 ];
 
 let currentModelIndex = 0;
@@ -10,7 +10,10 @@ let autos_usuario;
 let cantidad_autos = 0;
 let auto;
 
-fetch(window.location.href + "/autos")
+const params = new URLSearchParams(window.location.search);
+const n_usuario = params.get("n_usuario");
+
+fetch(`https://atg-industries-backend-production.up.railway.app/garage/${n_usuario}/autos`)
     .then(response => {
         if (!response.ok) {
             console.log("Error de respuesta");
@@ -175,8 +178,10 @@ function resetCameraAndControls(position, target) {
 }
 
 function borrar_auto(){
+    const auto_nombre = autos_usuario[currentModelIndex].nombre;
+
     if(cantidad_autos != 0){
-        fetch(window.location.href + "/" +auto.nombre,
+        fetch(`https://atg-industries-backend-production.up.railway.app/garage/${encodeURIComponent(n_usuario)}/${encodeURIComponent(auto_nombre)}`,
             {method: "DELETE"})
             .then(response => {
                 if (!response.ok) {
@@ -245,7 +250,7 @@ function actualizarNombreAuto() {
         if (!nuevoNombre) {
             alert('Por favor, ingrese un nuevo nombre.');
         }else{ 
-            fetch(window.location.href + "/actualizar/" + nombreActual, {
+            fetch(`https://atg-industries-backend-production.up.railway.app/garage/${encodeURIComponent(n_usuario)}/actualizar/${encodeURIComponent(nombreActual)}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -281,3 +286,6 @@ function cancelarCambioNombre() {
     document.getElementById('change-name-form').style.display = 'none';
     document.getElementById('btn-change-name').style.display = 'block';
 }
+
+const nombreUsuario = document.getElementById("nombre_usuario");
+nombreUsuario.innerText = `Garaje de ${n_usuario}`;
