@@ -84,10 +84,9 @@
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     transition: transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1), background-color 0.3s ease-in-out;
-    transform: translateX(100%);
 }
 #sidebar.show {
-    transform: translateX(0);
+    transform: translateX(0%);
     background-color: rgba(11, 5, 22, 0.8);
     backdrop-filter: blur(5px);
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
@@ -226,8 +225,8 @@
     opacity: 0.5;
     transition: opacity 0.3s; 
     color: white;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     font-size: 24px;
 }
 
@@ -238,8 +237,8 @@
 a {
     cursor: pointer;
 }
+
 @media (max-width: 800px) {
-    
     #bienvenida {
         font-size: 15px;
         padding: 20px;
@@ -261,4 +260,24 @@ a {
     #nav-disena{
         width: 80%;
     }
-  }
+
+    #sidebarIndicator {
+        border: #00ff2ac7 2px solid;
+        border-radius: 30%;
+        text-align: center;
+        background-color: rgba(15, 15, 15, 0.849);
+        animation: colorChange2 1s infinite;
+    }
+
+    @keyframes colorChange2 {
+        0% {
+            color: rgb(60, 255, 0);
+        }
+        50% {
+            color: rgb(255, 255, 255);
+        }
+        100% {
+            color: rgb(233, 250, 0);
+        }
+    }
+}

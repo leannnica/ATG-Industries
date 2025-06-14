@@ -28,7 +28,7 @@ main {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     animation: breathing 3s ease-in-out infinite;
 }
-
+/*
 @keyframes breathing {
     0%, 100% {
         transform: scale(1);
@@ -37,6 +37,7 @@ main {
         transform: scale(1.05);
     }
 }
+*/
 
 .formularios {
     text-align: center;
@@ -50,7 +51,8 @@ label {
 
 input[type="text"], input[type="password"] {
     width: 100%;
-    padding: 12px; 
+    padding: 12px;
+    padding-right: 0px; 
     margin: 8px 0; 
     border: 1px solid #ccc;
     border-radius: 5px; 
@@ -92,10 +94,12 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 a {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 0px;
+    margin-top: 10px;
     border: 2px solid transparent;
     border-radius: 5px;
     color: #333;
+    background-color: #a0a8ad;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
@@ -107,22 +111,16 @@ a:hover {
     border-color: #0056b3;
 }
 
-.link-home {
-    display: inline-block; 
-    margin-top: 20px; 
-    padding: 10px 20px;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+.btn-recuperar, .btn-registro, .btn-volver, .link-volver, .link-home {
+    width: 200px;
+    height: 20px;
+    font-size: 14px;
+    border: groove 2px #a9afb4;
+    text-align:center;
 }
 
-.link-home:hover {
-    color: #fff;
-    background-color: #007BFF; 
-    border-color: #0056b3; 
+.nav_botones {
+    flex-direction: column;
 }
 
 #footer_marca {
@@ -154,4 +152,26 @@ a:hover {
 
 #footer_marca a:hover {
     color: #ccc;
+}
+
+@media (max-width: 800px) {
+    main {
+        width: 200px;
+        height: auto;
+    }
+
+    .formularios {
+        width: 100%;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 90%;
+        padding: 12px;
+        padding-right: 0px; 
+        margin: 8px; 
+        border: 1px solid #ccc;
+        border-radius: 5px; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s ease;
+    }
 }
