@@ -305,3 +305,72 @@ section, canvas {
 #change-name-form button:active {
   transform: scale(0.95);
 }
+
+@media (max-width: 800px) {
+
+  h2 {
+    font-size: 25px;
+    margin: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+  .header-content {
+    font-size: 5px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  #car-name {
+    align-items: center;
+    font-size: 18px;   
+    text-align: center;
+    padding: 4px;  
+    width: 50%;
+  }
+
+  #btn-change-name {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  #change-name-form {
+    position: absolute;
+    top: 0%;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .change-name-container {
+    position: relative; 
+    display: inline-block; 
+  }
+  
+  #change-name-form {
+    width: 200px;
+    top: 100%;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.9); 
+    padding: 10px; 
+    border-radius: 8px; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6); 
+    max-width: 100%; 
+  }
+
+  .arrow-container {
+    top: 50%;
+    left: 10px;
+    right: 10px;
+  }
+
+  #car-canvas {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 200px;
+  }
+
+}
