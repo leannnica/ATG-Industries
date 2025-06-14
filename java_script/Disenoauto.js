@@ -103,7 +103,7 @@ function temporalColor() {
         if (color_guardado) {
             changeCarColor(color_guardado);
         }
-    }, 100);
+    }, 300);
 }
 
 function changeCarModel(direction) {
